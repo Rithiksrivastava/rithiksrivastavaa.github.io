@@ -86,7 +86,7 @@ button { font-family: inherit; }
   border: 2px solid transparent;
   border-radius: var(--radius-sm);
   cursor: pointer;
-  transition: background var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast);
+  transition: all var(--transition-fast);
 }
 
 .btn--primary {
@@ -484,29 +484,45 @@ button { font-family: inherit; }
    ============================================ */
 .trusted {
   padding: 3rem 0;
-  background: var(--clr-bg-page);
+  background: #f9f9f9;
   border-top: 1px solid var(--clr-border);
+  border-bottom: 1px solid var(--clr-border);
 }
-.trusted__logo-display {
+.trusted__heading {
   text-align: center;
-  max-width: 320px;
-  margin: 0 auto;
-}
-.trusted__name {
-  font-size: 1.95rem;
-  font-weight: 800;
-  color: #5c1029;
-  letter-spacing: 1px;
-  margin-bottom: 0.35rem;
-  font-family: var(--font-sans);
-}
-.trusted__tagline {
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
+  font-size: 0.9rem;
   color: var(--clr-text-muted);
   text-transform: uppercase;
-  margin: 0;
+  letter-spacing: 0.08em;
+  font-weight: 500;
+  margin-bottom: 2rem;
+}
+.trusted__logos {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 2rem;
+  align-items: center;
+  justify-items: center;
+}
+.trusted__logo-item {
+  text-align: center;
+}
+.trusted__logo-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.trusted__logo-text strong {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #5c1029;
+  letter-spacing: 0.05em;
+}
+.trusted__logo-text small {
+  font-size: 0.65rem;
+  color: var(--clr-text-muted);
+  text-transform: capitalize;
+  font-weight: 400;
 }
 
 /* ============================================
@@ -608,12 +624,21 @@ button { font-family: inherit; }
    ============================================ */
 .specs {
   padding: 4rem 0;
-  background: var(--clr-bg);
+  background: #1a2332;
+  color: var(--clr-white);
+}
+.specs .section-title {
+  color: var(--clr-white);
+  font-size: 2rem;
+}
+.specs .section-subtitle {
+  color: rgba(255,255,255,0.7);
 }
 .specs__table-wrap {
   overflow-x: auto;
-  border: 1px solid var(--clr-border);
+  border: none;
   border-radius: var(--radius-md);
+  margin-bottom: 2rem;
 }
 .specs__table {
   width: 100%;
@@ -621,25 +646,48 @@ button { font-family: inherit; }
   font-size: 0.9rem;
 }
 .specs__table thead {
-  background: var(--clr-primary);
+  background: #1e3a5f;
   color: var(--clr-white);
 }
 .specs__table th {
-  padding: 0.85rem 1.25rem;
+  padding: 1rem 1.5rem;
   text-align: left;
-  font-weight: 600;
+  font-weight: 700;
   white-space: nowrap;
 }
 .specs__table td {
-  padding: 0.75rem 1.25rem;
-  border-bottom: 1px solid var(--clr-border);
-  color: var(--clr-text);
+  padding: 0.95rem 1.5rem;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.85);
 }
 .specs__table tbody tr:last-child td {
   border-bottom: none;
 }
 .specs__table tbody tr:nth-child(even) {
-  background: var(--clr-bg-page);
+  background: rgba(255,255,255,0.04);
+}
+.specs__download {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+.specs__download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0.75rem 1.75rem;
+  border: 1px solid rgba(255,255,255,0.3);
+  background: transparent;
+  color: var(--clr-white);
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+.specs__download-btn:hover {
+  background: rgba(255,255,255,0.1);
+  border-color: rgba(255,255,255,0.5);
 }
 
 /* ============================================
@@ -1194,6 +1242,12 @@ button { font-family: inherit; }
     justify-content: center;
   }
 
+  /* Trusted logos responsive */
+  .trusted__logos {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
   /* Section titles smaller */
   .section-title {
     font-size: 1.4rem;
@@ -1213,6 +1267,9 @@ button { font-family: inherit; }
   .specs__table th,
   .specs__table td {
     padding: 0.6rem 0.75rem;
+  }
+  .specs .section-title {
+    font-size: 1.4rem;
   }
 
   /* Grids to single column */
@@ -1373,5 +1430,11 @@ button { font-family: inherit; }
   /* CTA */
   .cta-section__content h2 {
     font-size: 1.15rem;
+  }
+
+  /* Trusted logos 2 col on small mobile */
+  .trusted__logos {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
   }
 }

@@ -47,11 +47,14 @@ function initializeNavigation() {
     });
   }
 
-  // Close menu when a link is clicked
+  // Close menu when a link is clicked (only on mobile)
   document.querySelectorAll('header a[href^="#"]').forEach(link => {
     link.addEventListener('click', () => {
-      mainNav.style.display = 'none';
-      stickyNav.style.display = 'none';
+      // Only hide nav on mobile (when hamburger is visible)
+      if (window.innerWidth <= 768) {
+        mainNav.style.display = 'none';
+        stickyNav.style.display = 'none';
+      }
     });
   });
 }
